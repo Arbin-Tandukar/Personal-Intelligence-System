@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Personal Intelligence System - Your command center for life optimization" />
+    <meta name="theme-color" content="#0a0a0f" />
+    <title>PIS — Personal Intelligence System</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="apple-touch-icon" href="/icon-192.png" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="PIS" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+</head>
+
+<body>
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="sidebar-brand">
+                <span class="brand-icon"><i class="fas fa-brain"></i></span>
+                <span class="brand-text">PIS</span>
+            </div>
+            <button class="sidebar-toggle" id="sidebar-toggle" aria-label="Toggle sidebar">
+          <i class="fas fa-bars"></i>
+        </button>
+        </div>
+
+        <div class="sidebar-user" id="sidebar-user">
+            <div class="user-avatar" id="user-avatar">
+                <i class="fas fa-user"></i>
+            </div>
+            <div class="user-info">
+                <span class="user-name" id="user-display-name">Guest</span>
+                <span class="user-level" id="user-level-text">Level 1</span>
+            </div>
+            <div class="xp-bar-container">
+                <div class="xp-bar" id="user-xp-bar" style="width: 0%"></div>
+                <span class="xp-text" id="user-xp-text">0 / 100 XP</span>
+            </div>
+        </div>
+
+        <nav class="sidebar-nav">
+            <ul class="nav-list" id="nav-list">
+                <li class="nav-item active" data-route="dashboard">
+                    <a href="#dashboard" class="nav-link">
+                        <i class="fas fa-home"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li class="nav-item" data-route="profile">
+                    <a href="#profile" class="nav-link">
+                        <i class="fas fa-user"></i>
+                        <span>Profile</span>
+                    </a>
+                </li>
+                <li class="nav-item" data-route="study">
+                    <a href="#study" class="nav-link">
+                        <i class="fas fa-book"></i>
+                        <span>Study</span>
+                    </a>
+                </li>
+                <li class="nav-item" data-route="fitness">
+                    <a href="#fitness" class="nav-link">
+                        <i class="fas fa-dumbbell"></i>
+                        <span>Fitness</span>
+                    </a>
+                </li>
+                <li class="nav-item" data-route="habits">
+                    <a href="#habits" class="nav-link">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Habits</span>
+                    </a>
+                </li>
+                <li class="nav-item" data-route="finance">
+                    <a href="#finance" class="nav-link">
+                        <i class="fas fa-wallet"></i>
+                        <span>Finance</span>
+                    </a>
+                </li>
+                <li class="nav-item" data-route="tasks">
+                    <a href="#tasks" class="nav-link">
+                        <i class="fas fa-trophy"></i>
+                        <span>Tasks &amp; Quests</span>
+                    </a>
+                </li>
+                <li class="nav-item" data-route="journal">
+                    <a href="#journal" class="nav-link">
+                        <i class="fas fa-pen"></i>
+                        <span>Journal</span>
+                    </a>
+                </li>
+                <li class="nav-item" data-route="analytics">
+                    <a href="#analytics" class="nav-link">
+                        <i class="fas fa-chart-bar"></i>
+                        <span>Analytics</span>
+                    </a>
+                </li>
+                <li class="nav-item" data-route="ai">
+                    <a href="#ai" class="nav-link">
+                        <i class="fas fa-robot"></i>
+                        <span>AI Assistant</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <div class="sidebar-footer">
+            <a href="#" class="nav-link settings-link" id="settings-toggle">
+                <i class="fas fa-cog"></i>
+                <span>Settings</span>
+            </a>
+            <a href="#" class="nav-link logout-link" id="logout-btn">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>Logout</span>
+            </a>
+        </div>
+    </aside>
+
+    <!-- Mobile sidebar overlay -->
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+    <!-- Main Content Area -->
+    <main class="main-content" id="main-content">
+        <header class="main-header">
+            <button class="mobile-menu-btn" id="mobile-menu-btn">
+          <i class="fas fa-bars"></i>
+        </button>
+            <h1 class="page-title" id="page-title">Dashboard</h1>
+            <div class="header-actions">
+                <button class="btn btn-ghost" id="theme-toggle" title="Toggle theme">
+            <i class="fas fa-moon"></i>
+          </button>
+                <div class="header-user" id="header-user-btn">
+                    <div class="header-avatar"><i class="fas fa-user"></i></div>
+                </div>
+            </div>
+        </header>
+        <div class="content-area" id="app-content">
+            <!-- Pages render here -->
+            <div class="loading-container" id="initial-loading">
+                <div class="spinner"></div>
+                <p>Loading Personal Intelligence System...</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Toast Container -->
+    <div class="toast-container" id="toast-container"></div>
+
+    <!-- Login Modal -->
+    <div class="modal-overlay" id="auth-modal">
+        <div class="modal" id="auth-modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title" id="auth-modal-title">Welcome Back</h2>
+                <button class="modal-close" onclick="hideModal('auth-modal')">
+            &times;
+          </button>
+            </div>
+            <div class="modal-body" id="auth-modal-body">
+                <!-- Auth forms render here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Generic Confirm Modal -->
+    <div class="modal-overlay" id="confirm-modal">
+        <div class="modal modal-sm">
+            <div class="modal-header">
+                <h2 class="modal-title">Confirm</h2>
+                <button class="modal-close" onclick="hideModal('confirm-modal')">
+            &times;
+          </button>
+            </div>
+            <div class="modal-body">
+                <p id="confirm-message">Are you sure?</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-ghost" onclick="hideModal('confirm-modal')">
+            Cancel
+          </button>
+                <button class="btn btn-danger" id="confirm-yes-btn">Confirm</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Detail/View Modal -->
+    <div class="modal-overlay" id="detail-modal">
+        <div class="modal modal-lg">
+            <div class="modal-header">
+                <h2 class="modal-title" id="detail-modal-title">Details</h2>
+                <button class="modal-close" onclick="hideModal('detail-modal')">
+            &times;
+          </button>
+            </div>
+            <div class="modal-body" id="detail-modal-body"></div>
+        </div>
+    </div>
+
+    <!-- Settings Panel -->
+    <div class="modal-overlay" id="settings-modal">
+        <div class="modal">
+            <div class="modal-header">
+                <h2 class="modal-title">Settings</h2>
+                <button class="modal-close" onclick="hideModal('settings-modal')">
+            &times;
+          </button>
+            </div>
+            <div class="modal-body" id="settings-body">
+                <div class="settings-group">
+                    <h3>Appearance</h3>
+                    <div class="setting-item">
+                        <label>Theme</label>
+                        <select id="setting-theme" class="form-select">
+                <option value="dark">Dark</option>
+                <option value="light">Light</option>
+              </select>
+                    </div>
+                    <div class="setting-item">
+                        <label>Currency</label>
+                        <select id="setting-currency" class="form-select">
+                <option value="NPR">NPR (Rs)</option>
+                <option value="USD">USD ($)</option>
+                <option value="EUR">EUR (€)</option>
+                <option value="GBP">GBP (£)</option>
+                <option value="JPY">JPY (¥)</option>
+                <option value="INR">INR (₹)</option>
+              </select>
+                    </div>
+                </div>
+                <div class="settings-group">
+                    <h3><i class="fas fa-robot"></i> AI Assistant</h3>
+                    <p class="text-xs text-secondary" style="margin-bottom: 10px;">
+                        Add a Gemini API key to unlock AI-powered responses grounded in your data.
+                        Get a free key at <a href="https://aistudio.google.com/apikey" target="_blank" style="color: var(--accent-primary);">Google AI Studio</a>.
+                    </p>
+                    <div class="setting-item" style="flex-direction: column; align-items: stretch; gap: 8px;">
+                        <label>API Key</label>
+                        <div style="display: flex; gap: 8px;">
+                            <input type="password" id="setting-ai-key" class="form-input" placeholder="Paste your Gemini API key..." style="flex:1;" />
+                            <button type="button" class="btn btn-ghost btn-sm" onclick="document.getElementById('setting-ai-key').type = document.getElementById('setting-ai-key').type === 'password' ? 'text' : 'password'" title="Show/hide key">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="setting-item">
+                        <label>Model</label>
+                        <select id="setting-ai-model" class="form-select">
+                            <option value="gemini-2.0-flash">Gemini 2.0 Flash (Fast)</option>
+                            <option value="gemini-2.5-flash">Gemini 2.5 Flash (Latest)</option>
+                            <option value="gemini-2.5-pro">Gemini 2.5 Pro (Powerful)</option>
+                        </select>
+                    </div>
+                    <div id="ai-config-status" class="text-xs" style="margin-top: 6px;"></div>
+                </div>
+                <div class="settings-group">
+                    <h3>Notifications</h3>
+                    <div class="setting-item">
+                        <label>Enable Toasts</label>
+                        <input type="checkbox" id="setting-toasts" checked />
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" id="save-settings-btn">
+            Save Settings
+          </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts (loaded in dependency order) -->
+    <script src="/js/api.js"></script>
+    <script src="/js/app.js"></script>
+    <script src="/js/auth.js"></script>
+    <script src="/js/dashboard.js"></script>
+    <script src="/js/profile.js"></script>
+    <script src="/js/study.js"></script>
+    <script src="/js/fitness.js"></script>
+    <script src="/js/habits.js"></script>
+    <script src="/js/finance.js"></script>
+    <script src="/js/tasks.js"></script>
+    <script src="/js/journal.js"></script>
+    <script src="/js/analytics.js"></script>
+    <script src="/js/ai.js"></script>
+</body>
+
+</html>

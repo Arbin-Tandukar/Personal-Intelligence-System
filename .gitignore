@@ -1,0 +1,28 @@
+# Virtual Environment
+venv/
+.venv/
+env/
+
+# Python Cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.pytest_cache/
+
+# Sensitive Personal Data & Secrets
+.env
+pis.db
+*.sqlite3
+*.db
+backups/
+
+# Binaries
+cloudflared.exe
+*.exe
+
+# OS / Editor artifacts
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
